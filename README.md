@@ -87,11 +87,11 @@ You can set up the project in two ways: using **Poetry** or a traditional setup 
    * For MacOS and Linux: `cd $HOME/Documents`
    * For Windows: `cd $ENV:USERPROFILE\Documents` 
   
-3. Now install [Poetry](https://python-poetry.org/) into the virtual environment.  
-   ```bash
-   pip install poetry
-   ```
-4. If you're on Windows, install _git_ if you don't already have it on your machine:
+3. Now install [Poetry](https://python-poetry.org/) into the virtual environment: `pip install poetry`
+   * NOTE: If you receive an error: `command not found: pip`, ensure you are in the virtual environment.
+     <br>If you've confirmed you're in the venv, try the following command instead: `python3 -m pip install`
+
+5. If you're on Windows, install _git_ if you don't already have it on your machine:
    ```pwsh
    winget install --id Git.Git --source winget
    ```
@@ -99,7 +99,7 @@ You can set up the project in two ways: using **Poetry** or a traditional setup 
      ```
      %PROGRAMFILES%\Git\bin
      ```
-5. Clone the repository (choose only 1):  
+6. Clone the repository (choose only 1):  
    * Modified Version
      ```bash
      git clone https://github.com/btbutts/ambientcg-downloader
@@ -110,15 +110,15 @@ You can set up the project in two ways: using **Poetry** or a traditional setup 
      git clone https://github.com/alvarognnzz/ambientcg-downloader
      cd ambientcg-downloader
      ```
-6. Install dependencies:  
+7. Install dependencies:  
    ```bash
    poetry install --no-root
    ```
-7. Run the script:  
+8. Run the script:  
    ```bash
    poetry run python main.py
    ```
-8. Exit the Python venv: `deactivate`
+9. Exit the Python venv: `deactivate`
 
 ### Option 2: Without Poetry
 1. Clone the repository:
@@ -183,6 +183,7 @@ keep_files:                       # Files marked as false will be deleted
 > [!WARNING]  
 > The ambientCG texture library is quite large, with a size of up to 10GB at 1K resolution.  
 > If you select a higher resolution (e.g., 2K or 4K), the download process may take several hours depending on your internet speed and system performance.
+
 
 
 
