@@ -112,7 +112,7 @@ You can set up the project in two ways: using **Poetry** or a traditional setup 
      ```
 6. Install dependencies:  
    ```bash
-   poetry install
+   poetry install --no-root
    ```
 7. Run the script:  
    ```bash
@@ -183,5 +183,6 @@ keep_files:                       # Files marked as false will be deleted
 > [!WARNING]  
 > The ambientCG texture library is quite large, with a size of up to 10GB at 1K resolution.  
 > If you select a higher resolution (e.g., 2K or 4K), the download process may take several hours depending on your internet speed and system performance.
+
 
 
