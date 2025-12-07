@@ -44,28 +44,86 @@ With this automation, all textures are pre-downloaded to your computer. Once you
 You can set up the project in two ways: using **Poetry** or a traditional setup with `requirements.txt`. Choose the poetry if you want to avoid dependencies issues.  
 
 ### Option 1: Using Poetry  
-1. Ensure you have [Poetry](https://python-poetry.org/) installed.  
+1. Install _Python_ on your machine, then create and enter (_Activate_) a Python virtual environment
+   * Windows (Using PowerShell):
+   
+     ```pwsh
+     winget install --id Python.Python.3.14 --source winget
+     python -m venv "$ENV:USERPROFILE\Documents\ambientcg-python3-environment"
+     cd "$ENV:USERPROFILE\Documents\ambientcg-python3-environment"
+     .\Scripts\Activate.ps1
+     ```
+     * NOTE: If you receive an error when attempting to execute Python after the install, you may need to add it to your user's $PATH variable.
+         * Select the _Start_ button and search for: `Environment`.
+         * Select the results list: `Edit the system environment variables`, then click the Environment Variables button in the System Properties dialogue box.
+         * Under the _User Variables_ section, select the _PATH_ variable and then choose: `Edit`, then `New`.
+         * Enter the following path: `%USERPROFILE%\AppData\Local\Programs\Python\Python314`
+         * Open a new PowerShell window and attmpt to create the virtual environment again
+   * MacOS (Install [HomeBrew if you don't already have it](https://brew.sh/)):
+   
+     ```zsh
+     brew install python3
+     python3 -m venv $HOME/Documents/ambientcg-python3-environment
+     source $HOME/Documents/ambientcg-python3-environment/bin/activate
+     ```
+   * Linux:
+     * Debian/Ubuntu:
+     
+       `sudo apt update && sudo apt install python3`
+     * Fedora:
+     
+       `sudo dnf install python3`
+     * Redhat/Centos:
+       ```bash
+       sudo yum install -y epel-release
+       sudo yum install -y python314
+       ```
+   * Create and enter Python Virtual Envrionment on Linux:
+     ```bash
+     python3 -m venv $HOME/Documents/ambientcg-python3-environment
+     source $HOME/Documents/ambientcg-python3-environment/bin/activate
+     ```
+2. The virtual environment allows us to isolate the ambientcg-downloader script from the system, as is often required in many OS's these days. If you successfully entered the venv, you should see its name `(ambientcg-python3-environment)` prefixed in front of your terminal's current line. Once you're the Python venv, change directories to your Documents folder
+   * For MacOS and Linux: `cd $HOME/Documents`
+   * For Windows: `cd $ENV:USERPROFILE\Documents` 
+  
+3. Now install [Poetry](https://python-poetry.org/) into the virtual environment.  
    ```bash
    pip install poetry
    ```
-2. Clone the repository:  
-   ```bash
-   git clone https://github.com/alvarognnzz/ambientcg-downloader
-   cd ambientcg-downloader
+4. If you're on Windows, install _git_ if you don't already have it on your machine:
+   ```pwsh
+   winget install --id Git.Git --source winget
    ```
-3. Install dependencies:  
+   * NOTE: If you receive an error, you may need to add the _git_ install directory to your _PATH_ variable. Using the previous instructions to edit the Windows System variables from step 1, add:
+     ```
+     %PROGRAMFILES%\Git\bin
+     ```
+5. Clone the repository (choose only 1):  
+   * Modified Version
+     ```bash
+     git clone https://github.com/btbutts/ambientcg-downloader
+     cd ambientcg-downloader
+     ```
+   * Original Version
+     ```bash
+     git clone https://github.com/alvarognnzz/ambientcg-downloader
+     cd ambientcg-downloader
+     ```
+6. Install dependencies:  
    ```bash
    poetry install
    ```
-4. Run the script:  
+7. Run the script:  
    ```bash
    poetry run python main.py
    ```
+8. Exit the Python venv: `deactivate`
 
 ### Option 2: Without Poetry
-1. Clone the repository:  
+1. Clone the repository:
    ```bash
-   git clone https://github.com/alvarognnzz/ambientcg-downloader
+   git clone https://github.com/btbutts/ambientcg-downloader
    cd ambientcg-downloader
    ```
 2. Install dependencies:  
@@ -125,4 +183,5 @@ keep_files:                       # Files marked as false will be deleted
 > [!WARNING]  
 > The ambientCG texture library is quite large, with a size of up to 10GB at 1K resolution.  
 > If you select a higher resolution (e.g., 2K or 4K), the download process may take several hours depending on your internet speed and system performance.
+
 
